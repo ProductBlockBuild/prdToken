@@ -1,0 +1,10 @@
+.project
+*.settings/
+/.project
+/.project
+/build/compiler**
+tmp/**
+docs**
+.idea
+node_modules
+testee.log

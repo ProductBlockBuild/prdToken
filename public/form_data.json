@@ -1,0 +1,2315 @@
+{
+  "type": "div",
+  "class": "panel",
+  "html": [
+    {
+      "type": "div",
+      "class": "panel-header",
+      "css": {
+        "margin-left": "15px",
+        "margin-top": "16px",
+        "text-align": "center"
+      },
+      "html": [
+        {
+          "type": "h2",
+          "html": [
+            {
+              "type": "img",
+              "src": "./assets/global/images/logo/Bit-logo-green-500.png",
+              "width": "48",
+              "css": {
+                "margin-top": "-13px"
+              }
+            },
+            {
+              "type": "strong",
+              "html": "Coin"
+            },
+            {
+              "type": "span",
+              "html": "Creator"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "class": "panel-content",
+      "html": [
+        {
+          "type": "div",
+          "class": "icheck-inline",
+          "css": {
+            "margin": "5px 0px 0px 15px",
+            "text-align": "center"
+          },
+          "html": [
+            {
+              "type": "label",
+              "html": [
+                {
+                  "type": "div",
+                  "class": "iradio_square-blue",
+                  "css": {
+                    "position": "relative"
+                  },
+                  "html": [
+                    {
+                      "type": "radio",
+                      "name": "radio2",
+                      "data-radio": "iradio_square-blue",
+                      "css": {
+                        "position": "absolute",
+                        "opacity": "0"
+                      }
+                    },
+                    {
+                      "type": "ins",
+                      "class": "iCheck-helper",
+                      "css": {
+                        "position": "absolute",
+                        "top": "0%",
+                        "left": "0%",
+                        "display": "block",
+                        "width": "100%",
+                        "height": "100%",
+                        "margin": "0px",
+                        "padding": "0px",
+                        "background": "rgb(255, 255, 255)",
+                        "border": "0px",
+                        "opacity": "0"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "span",
+                  "html": "Crowd funding"
+                }
+              ]
+            },
+            {
+              "type": "label",
+              "html": [
+                {
+                  "type": "div",
+                  "class": "iradio_square-blue",
+                  "css": {
+                    "position": "relative"
+                  },
+                  "html": [
+                    {
+                      "type": "radio",
+                      "name": "radio2",
+                      "data-radio": "iradio_square-blue",
+                      "css": {
+                        "position": "absolute",
+                        "opacity": "0"
+                      }
+                    },
+                    {
+                      "type": "ins",
+                      "class": "iCheck-helper",
+                      "css": {
+                        "position": "absolute",
+                        "top": "0%",
+                        "left": "0%",
+                        "display": "block",
+                        "width": "100%",
+                        "height": "100%",
+                        "margin": "0px",
+                        "padding": "0px",
+                        "background": "rgb(255, 255, 255)",
+                        "border": "0px",
+                        "opacity": "0"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "span",
+                  "html": "Bond / Debt"
+                }
+              ]
+            },
+            {
+              "type": "label",
+              "html": [
+                {
+                  "type": "div",
+                  "class": "iradio_square-blue",
+                  "css": {
+                    "position": "relative"
+                  },
+                  "html": [
+                    {
+                      "type": "radio",
+                      "name": "radio2",
+                      "data-radio": "iradio_square-blue",
+                      "css": {
+                        "position": "absolute",
+                        "opacity": "0"
+                      }
+                    },
+                    {
+                      "type": "ins",
+                      "class": "iCheck-helper",
+                      "css": {
+                        "position": "absolute",
+                        "top": "0%",
+                        "left": "0%",
+                        "display": "block",
+                        "width": "100%",
+                        "height": "100%",
+                        "margin": "0px",
+                        "padding": "0px",
+                        "background": "rgb(255, 255, 255)",
+                        "border": "0px",
+                        "opacity": "0"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "span",
+                  "html": "Lending"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "class": "nav-tabs3",
+          "html": [
+            {
+              "type": "ul",
+              "id": "myTab6",
+              "class": "nav nav-tabs",
+              "html": [
+                {
+                  "type": "li",
+                  "class": "active",
+                  "html": [
+                    {
+                      "type": "a",
+                      "href": "#tab6_1",
+                      "data-toggle": "tab",
+                      "aria-expanded": "true",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "icon-home"
+                        },
+                        {
+                          "type": "span",
+                          "html": "Setup"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "li",
+                  "html": [
+                    {
+                      "type": "a",
+                      "href": "#tab6_2",
+                      "data-toggle": "tab",
+                      "aria-expanded": "false",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "fa fa-gears"
+                        },
+                        {
+                          "type": "span",
+                          "html": "Permissions"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "li",
+                  "html": [
+                    {
+                      "type": "a",
+                      "href": "#tab6_3",
+                      "data-toggle": "tab",
+                      "aria-expanded": "false",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "fa fa-users"
+                        },
+                        {
+                          "type": "span",
+                          "html": "Crowd Funding"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "li",
+                  "html": [
+                    {
+                      "type": "a",
+                      "href": "#tab6_4",
+                      "data-toggle": "tab",
+                      "aria-expanded": "false",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "fa fa-bank"
+                        },
+                        {
+                          "type": "span",
+                          "html": "Bond / Debt"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "li",
+                  "html": [
+                    {
+                      "type": "a",
+                      "href": "#tab6_5",
+                      "data-toggle": "tab",
+                      "aria-expanded": "false",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "fa fa-line-chart"
+                        },
+                        {
+                          "type": "span",
+                          "html": "Lending"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "li",
+                  "html": [
+                    {
+                      "type": "a",
+                      "href": "#tab6_6",
+                      "data-toggle": "tab",
+                      "aria-expanded": "false",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "fa fa-code"
+                        },
+                        {
+                          "type": "span",
+                          "html": "Contract"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "li",
+                  "id": "tab_summary",
+                  "html": [
+                    {
+                      "type": "a",
+                      "href": "#tab6_7",
+                      "data-toggle": "tab",
+                      "aria-expanded": "false",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "icon icons-documents-bookmarks-01"
+                        },
+                        {
+                          "type": "span",
+                          "html": "Summary"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "div",
+              "class": "tab-content",
+              "html": [
+                {
+                  "type": "div",
+                  "class": "tab-pane fade active in",
+                  "id": "tab6_1",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Beneficiary Account"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Put your Ethereum address here",
+                          "data-original-title": "Beneficiary Account"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "class": "form-control input-lg",
+                          "placeholder": "Coin or Token Name"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "This is full name of your token",
+                          "data-original-title": "Coin or Token Name"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12",
+                      "html": [
+                        {
+                          "type": "textarea",
+                          "name": "comment",
+                          "class": "form-control form-white",
+                          "placeholder": "Write your description... (minimum 30 characters)",
+                          "rows": "10",
+                          "min-length": "30",
+                          "required": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "class": "form-control input-lg",
+                          "placeholder": "Choose A Symbol"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "This is like your stock ticker symbol, choose something memerable",
+                          "data-original-title": "Your Token or Coin Symbol"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Number of Decimal Points"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "How small fraction would you like to offer?",
+                          "data-original-title": "Number of Decimal Points"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "class": "tab-pane fade",
+                  "id": "tab6_2",
+                  "html": [
+                    {
+                      "type": "h3",
+                      "html": [
+                        {
+                          "type": "label",
+                          "class": "switch m-r-20",
+                          "css": {
+                            "margin-top": "-5px"
+                          },
+                          "html": [
+                            {
+                              "type": "checkbox",
+                              "class": "switch-input"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-label",
+                              "data-on": "On",
+                              "data-off": "Off"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-handle"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "span",
+                          "html": "Enable Market Fee"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-6 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "name": "name",
+                          "class": "form-control input-sm form-white",
+                          "placeholder": "Percentage fee for each transaction"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "The percentage of market fees that are applied can be defined and changed by the issuer and any feee generated that way will be accumulated when any tokens are traded",
+                          "data-original-title": "Market Fee"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "br"
+                    },
+                    {
+                      "type": "br"
+                    },
+                    {
+                      "type": "h3",
+                      "html": [
+                        {
+                          "type": "label",
+                          "class": "switch m-r-20",
+                          "css": {
+                            "margin-top": "-5px"
+                          },
+                          "html": [
+                            {
+                              "type": "checkbox",
+                              "class": "switch-input"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-label",
+                              "data-on": "On",
+                              "data-off": "Off"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-handle"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "span",
+                          "html": "Require holders to be whitelisted"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "h3",
+                      "html": [
+                        {
+                          "type": "label",
+                          "class": "switch m-r-20",
+                          "css": {
+                            "margin-top": "-5px"
+                          },
+                          "html": [
+                            {
+                              "type": "checkbox",
+                              "class": "switch-input"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-label",
+                              "data-on": "On",
+                              "data-off": "Off"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-handle"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "span",
+                          "html": "Issuer May transfer asset back to itself."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "h3",
+                      "html": [
+                        {
+                          "type": "label",
+                          "class": "switch m-r-20",
+                          "css": {
+                            "margin-top": "-5px"
+                          },
+                          "html": [
+                            {
+                              "type": "checkbox",
+                              "class": "switch-input"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-label",
+                              "data-on": "On",
+                              "data-off": "Off"
+                            },
+                            {
+                              "type": "span",
+                              "class": "switch-handle"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "span",
+                          "html": "Issuer Must approve all transfers."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "class": "tab-pane fade in",
+                  "id": "tab6_3",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Funding Goal in Ether"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "How much are you looking to raise?",
+                          "data-original-title": "Funding Goal in Ether."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "name": "datetimepicker",
+                          "class": "form-control datetimepicker hasDatepicker input-lg",
+                          "placeholder": "Choose a Start Date. (mm/dd/yy)",
+                          "id": "dp1501598689868"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "When should the campaign begin?",
+                          "data-original-title": "Start Date"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "name": "datetimepicker",
+                          "class": "form-control datetimepicker hasDatepicker input-lg form-white",
+                          "placeholder": "Choose a End Date. (mm/dd/yy)",
+                          "id": "dp1501598689868"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "When should the campaign end?",
+                          "data-original-title": "End Date"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "name": "name",
+                          "class": "form-control input-lg",
+                          "placeholder": "Cost of Each Token"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "How much should each token cost?",
+                          "data-original-title": "Token Cost."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-md-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "text",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Token Reward Address"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Where to send the proceeds? ie.Your Ether Wallet.",
+                          "data-original-title": "Token Reward."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12",
+                      "html": [
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-5px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "span",
+                              "html": "Return funds if funding not met."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-5px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "span",
+                              "html": "Allow for over subscription."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-5px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "span",
+                              "html": "Duplicate Founder Tokens."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-5px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "span",
+                              "html": "Veto Power."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-5px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "span",
+                              "html": "Enable Token Account Freezing."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-5px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "span",
+                              "html": "Discounts."
+                            }
+                          ]
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm form-white",
+                          "placeholder": "Starting Range"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm form-white",
+                          "placeholder": "Ending Range"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm form-white",
+                          "placeholder": "Discount percentage"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm",
+                          "placeholder": "Starting Range"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm",
+                          "placeholder": "Ending Range"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm",
+                          "placeholder": "Discount percentage"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm form-white",
+                          "placeholder": "Starting Range"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm form-white",
+                          "placeholder": "Ending Range"
+                        },
+                        {
+                          "type": "number",
+                          "class": "form-control input-sm form-white",
+                          "placeholder": "Discount percentage"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "class": "tab-pane fade in",
+                  "id": "tab6_4",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "col-sm-12",
+                      "html": [
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Coupon dates are the dates on which the bond issuer will make interest payments. Typical intervals are annual or semi-annual coupon payments",
+                          "data-original-title": "Support Title"
+                        },
+                        {
+                          "type": "strong",
+                          "html": "COUPON DATES"
+                        },
+                        {
+                          "type": "br"
+                        },
+                        {
+                          "type": "br"
+                        },
+                        {
+                          "type": "div",
+                          "class": "icheck-inline",
+                          "html": [
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Weekly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Bi-Weekly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Monthly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Quarterly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Semi Annually"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Yearly"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Issue price in ether"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Issue price is the price at which the bond issuer originally sells the bonds.",
+                          "data-original-title": "Issue Price"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Maturity date"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Maturity date is the date on which the bond will mature and the bond issuer will pay the bond holder the face value of the bond.",
+                          "data-original-title": "Maturity date"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Coupon Rate"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Coupon rate is the rate of interest the bond issuer will pay on the face value of the bond, expressed as a percentage.",
+                          "data-original-title": "Coupon Rate"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Face value"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Face value is the money amount the bond will be worth at its maturity, and is also the reference amount the bond issuer uses when calculating interest payments.",
+                          "data-original-title": "Face Value"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Days Until Default"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "The amount of days of non-payment before collaterial is given to debt holders. Only applies to Collaterlalized / secured debt",
+                          "data-original-title": "Default"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Collateral"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Collateral is an asset used to secure a loan; it is something that the lender can take if the borrower defaults. Enter the amount of ether you will use to secure the debt.",
+                          "data-original-title": "Collateral"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12",
+                      "html": [
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-1px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "i",
+                              "class": "fa fa-question-circle c-blue",
+                              "rel": "popover",
+                              "data-container": "body",
+                              "data-toggle": "popover",
+                              "data-placement": "top",
+                              "data-content": "Unsecured debt refers to any type of debt or general obligation that is not protected by a guarantor, or collateralized by a lien on specific assets of the borrower in the case of a bankruptcy or liquidation or failure to meet the terms for repayment.",
+                              "data-original-title": "Unsecured"
+                            },
+                            {
+                              "type": "strong",
+                              "html": "Unsecured"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "class": "tab-pane fade in",
+                  "id": "tab6_5",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "col-sm-12",
+                      "html": [
+                        {
+                          "type": "strong",
+                          "html": "INTEREST PAYMENT SCHEDULE"
+                        },
+                        {
+                          "type": "br"
+                        },
+                        {
+                          "type": "br"
+                        },
+                        {
+                          "type": "div",
+                          "class": "icheck-inline",
+                          "html": [
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Weekly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Bi-Weekly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Monthly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Quarterly"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "label",
+                              "html": [
+                                {
+                                  "type": "div",
+                                  "class": "iradio_square-blue",
+                                  "css": {
+                                    "position": "relative"
+                                  },
+                                  "html": [
+                                    {
+                                      "type": "radio",
+                                      "name": "radio2",
+                                      "data-radio": "iradio_square-blue",
+                                      "css": {
+                                        "position": "absolute",
+                                        "opacity": "0"
+                                      }
+                                    },
+                                    {
+                                      "type": "ins",
+                                      "class": "iCheck-helper",
+                                      "css": {
+                                        "position": "absolute",
+                                        "top": "0%",
+                                        "left": "0%",
+                                        "display": "block",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "margin": "0px",
+                                        "padding": "0px",
+                                        "background": "rgb(255,255,255)",
+                                        "border": "0px",
+                                        "opacity": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "strong",
+                                  "html": "Yearly"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Deposit / Down payment"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "A down payment is a type of payment made in cash during the onset of the purchase of an expensive good or service. ... For example, many homebuyers pay down payments equal to 5 to 25% of the total value of the home.",
+                          "data-original-title": "Deposit"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Term in months"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "Length of the repayment",
+                          "data-original-title": "Term in months"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Annual percentage rate of charge (APR)"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "The percentage paid based on the value of the issue price",
+                          "data-original-title": "Annual percentage rate"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12 inside-tooltip",
+                      "html": [
+                        {
+                          "type": "number",
+                          "name": "name",
+                          "class": "form-control input-lg form-white",
+                          "placeholder": "Days Until Default"
+                        },
+                        {
+                          "type": "i",
+                          "class": "fa fa-question-circle c-blue",
+                          "rel": "popover",
+                          "data-container": "body",
+                          "data-toggle": "popover",
+                          "data-placement": "top",
+                          "data-content": "The amount of days of non-payment before down payment / deposit is given to debt holders. Only applies to Collaterlalized / secured debt.",
+                          "data-original-title": "Default"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "col-sm-12",
+                      "html": [
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-1px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "i",
+                              "class": "fa fa-question-circle c-blue",
+                              "rel": "popover",
+                              "data-container": "body",
+                              "data-toggle": "popover",
+                              "data-placement": "top",
+                              "data-content": "A repayment of the outstanding principal sum made at the end of a loan period, interest only having been paid.",
+                              "data-original-title": "Annual percentage rate"
+                            },
+                            {
+                              "type": "strong",
+                              "html": "Balloon Payment (Interest Only)"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-1px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "i",
+                              "class": "fa fa-question-circle c-blue",
+                              "rel": "popover",
+                              "data-container": "body",
+                              "data-toggle": "popover",
+                              "data-placement": "top",
+                              "data-content": "Principal is the money used to pay down the balance of the loan; interest is the charge paid to the lender for the privilege of borrowing the money.",
+                              "data-original-title": "Principal and Interest"
+                            },
+                            {
+                              "type": "strong",
+                              "html": "Principal and Interest"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "class": "tab-pane fade in",
+                  "id": "tab6_6",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "col-sm-12",
+                      "html": [
+                        {
+                          "type": "textarea",
+                          "name": "comment",
+                          "rows": "20",
+                          "class": "form-control form-white",
+                          "placeholder": "Solidity Contract Code",
+                          "minlength": "30",
+                          "aria-required": "true",
+                          "html": "pragma solidity ^0.4.0;\n"
+                          +
+                          "\n"
+                          +
+                          "contract Token {\n"
+                          +
+                          "    mapping (address => uint) public balances;\n"
+                          +
+                          "\n"
+                          +
+                          "    function Token() {\n"
+                          +
+                          "        balances[msg.sender] = 1000000;\n"
+                          +
+                          "    }\n"
+                          +
+                          "\n"
+                          +
+                          "    function transfer(address _to, uint _amount) {\n"
+                          +
+                          "        require (balances[msg.sender] < _amount) {\n"
+                          +
+                          "                    }\n"
+                          +
+                          "\n"
+                          +
+                          "        balances[msg.sender] -= _amount;\n"
+                          +
+                          "        balances[_to] += _amount;\n"
+                          +
+                          "    }\n"
+                          +
+                          "}"
+                        },
+                        {
+                          "type": "br"
+                        },
+                        {
+                          "type": "br"
+                        },
+                        {
+                          "type": "strong",
+                          "html": "TOKEN CONTRACT ADDRESS"
+                        },
+                        {
+                          "type": "text",
+                          "class": "form-control input-m",
+                          "placeholder": "0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359"
+                        },
+                        {
+                          "type": "h3",
+                          "html": [
+                            {
+                              "type": "i",
+                              "class": "fa fa-warning c-blue",
+                              "rel": "popover",
+                              "data-container": "body",
+                              "data-toggle": "popover",
+                              "data-placement": "top",
+                              "data-content": "Deploy your contract. BE CAREFUL, there is no undo.",
+                              "data-original-title": "GoLive"
+                            },
+                            {
+                              "type": "strong",
+                              "html": "Go Live"
+                            },
+                            {
+                              "type": "label",
+                              "class": "switch m-r-20",
+                              "css": {
+                                "margin-top": "-1px"
+                              },
+                              "html": [
+                                {
+                                  "type": "checkbox",
+                                  "class": "switch-input"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-label",
+                                  "data-on": "On",
+                                  "data-off": "Off"
+                                },
+                                {
+                                  "type": "span",
+                                  "class": "switch-handle"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "div",
+                  "class": "tab-pane fade in",
+                  "id": "tab6_7",
+                  "html": [
+                    {
+                      "type": "h2",
+                      "css": {
+                        "text-align": "center"
+                      },
+                      "html": {
+                        "type": "strong",
+                        "html": "CONTACT SUMMARY"
+                      }
+                    },
+                    {
+                      "type": "h3",
+                      "html": "SETUP"
+                    },
+                    {
+                      "type": "h3",
+                      "html": "PERMISSIONS"
+                    },
+                    {
+                      "type": "h3",
+                      "html": "CROWD FUNDING"
+                    },
+                    {
+                      "type": "h3",
+                      "html": "BOND / DEBT"
+                    },
+                    {
+                      "type": "h3",
+                      "html": "LENDING"
+                    },
+                    {
+                      "type": "h3",
+                      "html": [
+                        {
+                          "type": "span",
+                          "html": "TOKEN CONTRACT ADDRESS"
+                        },
+                        {
+                          "type": "strong",
+                          "html": "0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "css": {
+        "text-align": "right",
+        "margin-top": "10px",
+        "margin-right": "25px"
+      },
+      "html": [
+        {
+          "type": "button",
+          "class": "btn btn-white",
+          "data-toggle": "modal",
+          "data-target": "#colored-embed",
+          "html": "Embed"
+        },
+        {
+          "type": "div",
+          "class": "modal fade",
+          "id": "colored-embed",
+          "tabindex": "-1",
+          "role": "dialog",
+          "aria-hidden": "true",
+          "css": {
+            "display": "none"
+          },
+          "html": [
+            {
+              "type": "div",
+              "class": "modal-dialog",
+              "html": [
+                {
+                  "type": "div",
+                  "class": "modal-content",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "modal-header bg-green",
+                      "html": [
+                        {
+                          "type": "button",
+                          "class": "close",
+                          "data-dismiss": "modal",
+                          "aria-hidden": "true",
+                          "html": {
+                            "type": "i",
+                            "class": "icons-office-52"
+                          }
+                        },
+                        {
+                          "type": "h4",
+                          "class": "modal-title",
+                          "html": [
+                            {
+                              "type": "strong",
+                              "html": "Embed"
+                            },
+                            {
+                              "type": "span",
+                              "html": "Code"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "modal-body",
+                      "html": [
+                        {
+                          "type": "textarea",
+                          "class": "form-control form-white",
+                          "rows": "20",
+                          "placeholder": "Solidity Contract Code",
+                          "minlength": "30",
+                          "aria-required": "true"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "modal-footer",
+                      "html": [
+                        {
+                          "type": "button",
+                          "class": "btn btn-default btn-embossed",
+                          "data-dismiss": "modal",
+                          "html": "Close"
+                        },
+                        {
+                          "type": "button",
+                          "class": "btn btn-primary btn-embossed",
+                          "data-dismiss": "modal",
+                          "html": "Save Changes"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "class": "btn btn-danger",
+          "data-toggle": "modal",
+          "data-target": "#modal-slideright",
+          "html": "Reset"
+        },
+        {
+          "type": "div",
+          "class": "modal fade modal-slideright",
+          "id": "modal-slideright",
+          "tabindex": "-1",
+          "role": "dialog",
+          "aria-hidden": "true",
+          "css": {
+            "display": "none"
+          },
+          "html": [
+            {
+              "type": "div",
+              "class": "modal-dialog",
+              "html": [
+                {
+                  "type": "div",
+                  "class": "modal-content",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "modal-body",
+                      "html": [
+                        {
+                          "type": "div",
+                          "class": "row",
+                          "html": [
+                            {
+                              "type": "div",
+                              "class": "col-sm-12",
+                              "html": [
+                                {
+                                  "type": "h2",
+                                  "class": "c-primary m-b-30",
+                                  "html": "Are you sure?"
+                                },
+                                {
+                                  "type": "button",
+                                  "class": "btn btn-primary btn-embossed btn-block",
+                                  "data-dismiss": "modal",
+                                  "html": "Yes"
+                                },
+                                {
+                                  "type": "button",
+                                  "class": "btn btn-white btn-block",
+                                  "data-dismiss": "modal",
+                                  "html": "Oops!"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "class": "btn btn-primary",
+          "data-toggle": "modal",
+          "data-target": "#colored-header",
+          "html": "Save"
+        },
+        {
+          "type": "div",
+          "class": "modal fade",
+          "id": "colored-header",
+          "tabindex": "-1",
+          "role": "dialog",
+          "aria-hidden": "true",
+          "css": {
+            "display": "none"
+          },
+          "html": [
+            {
+              "type": "div",
+              "class": "modal-dialog",
+              "html": [
+                {
+                  "type": "div",
+                  "class": "modal-content",
+                  "html": [
+                    {
+                      "type": "div",
+                      "class": "modal-header bg-green",
+                      "html": [
+                        {
+                          "type": "button",
+                          "class": "close",
+                          "data-dismiss": "modal",
+                          "aria-hidden": "true",
+                          "html": {
+                            "type": "i",
+                            "class": "icons-office-52"
+                          }
+                        },
+                        {
+                          "type": "h4",
+                          "class": "modal-title",
+                          "html": [
+                            {
+                              "type": "strong",
+                              "html": "Terms "
+                            },
+                            {
+                              "type": "span",
+                              "html": "of Service"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "div",
+                      "class": "modal-body",
+                      "html": []
+                    },
+                    {
+                      "type": "div",
+                      "class": "modal-footer",
+                      "html": [
+                        {
+                          "type": "button",
+                          "class": "btn btn-default btn-embossed",
+                          "data-dismiss": "modal",
+                          "html": "Close"
+                        },
+                        {
+                          "type": "button",
+                          "class": "btn btn-primary btn-embossed",
+                          "data-dismiss": "modal",
+                          "html": "Save Changes"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

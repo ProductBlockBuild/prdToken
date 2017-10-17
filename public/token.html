@@ -1,0 +1,103 @@
+<html>
+    <body>
+      <head>
+
+          <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+          <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+           <!--  Material Dashboard CSS    -->
+          <link href="../assets/css/material-dashboard.css" rel="stylesheet" />
+          <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+          <title>ICO</title>
+      </head>
+      <div style="margin: auto;
+      width: 50%;
+      border: 3px solid black;
+      padding: 10px;">
+      <b>Token Contract</b> <br><br>      
+      <input type="text" id="public-token-name" placeholder="Public Token Name" value="ICO token"><br><br>  
+      <input type="text" id="token-symbol" placeholder="Token Symbol (Exchange)" value="ICO"><br><br>  
+      <input type="text" id="token-version" placeholder="Token Version e.g. 1.0"  value="1.0"><br><br>       
+      <input type="text" id="initial-supply" placeholder="Initial Supply e.g. 10,000,000" value="10000000" ><br><br>        
+      <input type="text" id="number-of-decimal" placeholder="Number of decimal eg. 10" value="10"><br><br>  
+      
+      
+      <b>ICO Contract</b><br><br>
+      <input type="text" id="multisig-ETH" placeholder="Multisig wallet address" value="0x6C88e6C76C1Eb3b130612D5686BE9c0A0C78925B"><br><br> 
+      <input type="text" id="toekens-for-team" placeholder="No of tokens reserved for team" value="4500000"><br><br> 
+      <input type="text" id="min-contribution-ETH" placeholder="Minimum amount to contribute" value="1.0"><br><br> 
+      <input type="text" id="max-cap" placeholder="Max cap" value="7500000"><br><br> 
+      <input type="text" id="min-cap" placeholder="Min cap" value="100000"><br><br> 
+      <input type="text" id="token-price-wei" placeholder="Token price in Wei" value="2949243519000000"><br><br>
+      <input type="text" id="campaign-duration-days" placeholder="Campaign duration in days" value="5"><br><br>
+      <input type="text" id="first-period" placeholder="First price period in blocks" value="400"><br><br>
+      <input type="text" id="second-period" placeholder="Second price period in blocks" value="10000"><br><br>
+      <input type="text" id="third-period" placeholder="Third price period in blocks" value="5000"><br><br>
+      <input type="text" id="first-bonus" placeholder="First bonus in %" value="20"><br><br>
+      <input type="text" id="second-bonus" placeholder="Second bonus in %" value="10"><br><br>
+      <input type="text" id="third-bonus" placeholder="Third bonus in %" value="5"><br><br>
+      <button id="save" type="button">Deploy</button><br><br>    
+      <button id="start" type="button">Start ICO</button>
+      <button id="emergency-stop" type="button">Emergency Stop</button>
+      <button id="emergency-restart" type="button">Emergency Restart</button><br><br>
+      <button id="finalize" type="button">Finalize</button>
+      <button id="transfer" type="button">Transfer Tokens</button>
+      <div id="result"></div><br><br>
+      </div>
+
+ <!-- Modal progress box start -->
+  <div class="modal fade" id="progress" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content box-windwow">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Blockchain process</h4>
+          <span id="message-status-title"></span>
+        </div>  
+        <div class="modal-body">
+          <span  id="message-status-body"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal progress box end -->
+    </body>
+
+
+
+
+
+    
+    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/js/metamask-deploy.js"></script>   
+    <script src="../assets/js/interface.js"></script> 
+    <script src="../assets/js/jquery.cookie.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/bootstrap-notify.js"></script>
+    <!-- web3 libraries -->
+    <script src="../../web3/dist/web3.js"></script>
+    <!-- TagsInput Plugin -->
+    <script src="../assets/js/jquery.tagsinput.js"></script>
+    <!-- Material Dashboard javascript methods -->
+    <script src="../assets/js/material-dashboard.js"></script>
+  
+    <script type="text/javascript">   
+      
+      function autorun(){
+            init();
+         }
+         if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+         else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+         else window.onload = autorun;
+          
+      </script>
+      
+
+</html>
