@@ -75,8 +75,8 @@ contract Ownable {
 contract Pausable is Ownable {
     bool public stopped;
 
-    event StoppedInEmergency(bool stopped);
-    event StartedFromEmergency(bool started);
+    event StoppedInEmergency(bool stoppedCampaign);
+    event StartedFromEmergency(bool startedCampaign);
 
     modifier stopInEmergency {
         if (stopped) {
@@ -141,354 +141,6 @@ contract PullPayment {
         }
         RefundETH(payee, payment);
         return true;
-    }
-}
-
-
-/*****
-    * @title The Crowd Sale Contract
-    */
-contract TokenSale is Ownable {
-    using SafeMath for uint256;
-    // Instance of the Real Token
-    Token public token;
-    // Received funds are transferred to the beneficiary
-    address public beneficiary;
-    // Number of Tokens/ETH in PreSale
-    uint256 public tokenPerEthPreSale;
-    // Number of Tokens/ETH in ICO
-    uint256 public tokenPerEthICO_1;
-    uint256 public tokenPerEthICO_2;
-    uint256 public tokenPerEthICO_3;
-    uint256 public tokenPerEthICO_4;
-    // Start Timestamp of Pre Sale
-    uint256 public presaleStartTimestamp;
-    // End Timestamp of Pre Sale
-    uint256 public presaleEndTimestamp;
-    // Start Timestamp for the ICO
-    uint256 public icoStartTimestamp_1;
-    uint256 public icoStartTimestamp_2;
-    uint256 public icoStartTimestamp_3;
-    uint256 public icoStartTimestamp_4;
-    // End Timestamp for the ICO
-    uint256 public icoEndTimestamp_1;
-    uint256 public icoEndTimestamp_2;
-    uint256 public icoEndTimestamp_3;
-    uint256 public icoEndTimestamp_4;
-    // Amount of tokens available for sale in Pre Sale Period
-    uint256 public presaleTokenLimit;
-    // Amount of tokens available for sale in ICO Period
-    uint256 public icoTokenLimit_1;
-    uint256 public icoTokenLimit_2;
-    uint256 public icoTokenLimit_3;
-    uint256 public icoTokenLimit_4;
-    // Total Tokens Sold in Pre Sale Period
-    uint256 public presaleTokenRaised;
-    // Total Tokens Sold in ICO Period
-    uint256 public icoTokenRaised_1;
-    uint256 public icoTokenRaised_2;
-    uint256 public icoTokenRaised_3;
-    uint256 public icoTokenRaised_4;
-    // Max Cap for Pre Sale
-    uint256 public presaleMaxEthCap;
-    // Min Cap for ICO
-    uint256 public icoMinEthCap_1;
-    uint256 public icoMinEthCap_2;
-    uint256 public icoMinEthCap_3;
-    uint256 public icoMinEthCap_4;
-    // Max Cap for ICO
-    uint256 public icoMaxEthCap_1;
-    uint256 public icoMaxEthCap_2;
-    uint256 public icoMaxEthCap_3;
-    uint256 public icoMaxEthCap_4;
-    // Different number of Investors
-    uint256 public investorCount;
-    /*****
-        * State machine
-        *   - Unknown:      Default Initial State of the Contract
-        *   - Preparing:    All contract initialization calls
-        *   - PreSale:      We are into PreSale Period
-        *   - ICO:          The real Sale of Tokens, after Pre Sale
-        *   - Success:      Minimum funding goal reached
-        *   - Failure:      Minimum funding goal not reached
-        *   - Finalized:    The ICO has been concluded
-        *   - Refunding:    Refunds are loaded on the contract for reclaim.
-        */
-    enum State{Unknown, Preparing, PreSale, ICO_1, ICO_2, ICO_3, ICO_4, Success, Failure, PresaleFinalized, ICO1Finalized, ICO2Finalized, ICO3Finalized, ICO4Finalized}
-    State public crowdSaleState;
-    /*****
-        * @dev Modifier to check that amount transferred is not 0
-        */
-    modifier nonZero() {
-        require(msg.value != 0);
-        _;
-    }
-    /*****
-        * @dev The constructor function to initialize the token related properties
-        * @param _token             address     Specifies the address of the Token Contract
-        * @param _presaleRate       uint256     Specifies the amount of tokens that can be bought per ETH during Pre Sale
-        * @param _icoRate           uint256     Specifies the amount of tokens that can be bought per ETH during ICO
-        * @param _presaleStartTime  uint256     Specifies the Start Date of the Pre Sale
-        * @param _presaleDays       uint256     Specifies the duration of the Pre Sale
-        * @param _icoStartTime      uint256     Specifies the Start Date for the ICO
-        * @param _icoDays           uint256     Specifies the duration of the ICO
-        * @param _maxPreSaleEthCap  uint256     Maximum amount of ETHs to raise in Pre Sale
-        * @param _minICOEthCap      uint256     Minimum amount of ETHs to raise in ICO
-        * @param _maxICOEthCap      uint256     Maximum amount of ETHs to raise in ICO
-        */
-    function TokenSale(
-        address _token,
-        uint256 _presaleRate,
-        uint256 _icoRate_1,
-        uint256 _icoRate_2,
-        uint256 _icoRate_3,
-        uint256 _icoRate_4,
-        uint256 _presaleStartTime,
-        uint256 _presaleDays,
-        uint256 _icoStartTime_1,
-        uint256 _icoStartTime_2,
-        uint256 _icoStartTime_3,
-        uint256 _icoStartTime_4,
-        uint256 _icoDays_1,
-        uint256 _icoDays_2,
-        uint256 _icoDays_3,
-        uint256 _icoDays_4,
-        uint256 _maxPreSaleEthCap,
-        uint256 _minICOEthCap_1,
-        uint256 _minICOEthCap_2,
-        uint256 _minICOEthCap_3,
-        uint256 _minICOEthCap_4,
-        uint256 _maxICOEthCap_1,
-        uint256 _maxICOEthCap_2,
-        uint256 _maxICOEthCap_3,
-        uint256 _maxICOEthCap_4){
-            require(_token != address(0));
-            require(_presaleRate != 0);
-            require(_icoRate_1 != 0);
-            require(_icoRate_2 != 0);
-            require(_icoRate_3 != 0);
-            require(_icoRate_4 != 0);
-            require(_presaleStartTime > now);
-            require(_icoStartTime_1 > _presaleStartTime);
-            require(_icoStartTime_2 > _icoStartTime_1);
-            require(_icoStartTime_3 > _icoStartTime_2);
-            require(_icoStartTime_4 > _icoStartTime_3);
-            require(_minICOEthCap_1 <= _maxICOEthCap_1);
-            require(_minICOEthCap_2 <= _maxICOEthCap_2);
-            require(_minICOEthCap_3 <= _maxICOEthCap_3);
-            require(_minICOEthCap_4 <= _maxICOEthCap_4);
-            token = Token(_token);
-            tokenPerEthPreSale = _presaleRate;
-            tokenPerEthICO_1 = _icoRate_1;
-            tokenPerEthICO_2 = _icoRate_2;
-            tokenPerEthICO_3 = _icoRate_3;
-            tokenPerEthICO_4 = _icoRate_4;
-            presaleStartTimestamp = _presaleStartTime;
-            presaleEndTimestamp = presaleEndTimestamp + _presaleDays * 1 days;
-            icoStartTimestamp_1 = _icoStartTime_1;
-            icoStartTimestamp_2 = _icoStartTime_2;
-            icoStartTimestamp_3 = _icoStartTime_3;
-            icoStartTimestamp_4 = _icoStartTime_4;
-            icoEndTimestamp_1 = _icoStartTime_1 + _icoDays * 1 days;
-            icoEndTimestamp_2 = _icoStartTime_2 + _icoDays * 1 days;
-            icoEndTimestamp_3 = _icoStartTime_3 + _icoDays * 1 days;
-            icoEndTimestamp_4 = _icoStartTime_4 + _icoDays * 1 days;
-            presaleMaxEthCap = _maxPreSaleEthCap;
-            icoMinEthCap_1 = _minICOEthCap_1;
-            icoMinEthCap_2 = _minICOEthCap_2;
-            icoMinEthCap_3 = _minICOEthCap_3;
-            icoMinEthCap_4 = _minICOEthCap_4;
-            icoMaxEthCap_1 = _maxICOEthCap_1;
-            icoMaxEthCap_2 = _maxICOEthCap_2;
-            icoMaxEthCap_3 = _maxICOEthCap_3;
-            icoMaxEthCap_4 = _maxICOEthCap_4;
-            presaleTokenLimit = _maxPreSaleEthCap.div(_presaleRate);
-            icoTokenLimit_1 = _maxICOEthCap_1.div(_icoRate_1);
-            icoTokenLimit_2 = _maxICOEthCap_2.div(_icoRate_2);
-            icoTokenLimit_3 = _maxICOEthCap_3.div(_icoRate_3);
-            icoTokenLimit_4 = _maxICOEthCap_4.div(_icoRate_4);
-            assert(token.totalSupply() >= presaleTokenLimit.add(icoTokenLimit_1));
-            crowdSaleState = State.Preparing;
-    }
-    /*****
-        * @dev Fallback Function to buy the tokens
-        */
-    function () nonZero payable {
-        if(isPreSalePeriod()) {
-            if(crowdSaleState == State.Preparing) {
-                crowdSaleState = State.PreSale;
-            }
-            buyTokens(msg.sender, msg.value);
-        } else if (isICOPeriod_1()) {
-            if(crowdSaleState == State.PresaleFinalized) {
-                crowdSaleState = State.ICO_1;
-            }
-            buyTokens(msg.sender, msg.value);
-        } else if (isICOPeriod_2()) {
-            if(crowdSaleState == State.ICO1Finalized) {
-                crowdSaleState = State.ICO_2;
-            }
-            buyTokens(msg.sender, msg.value);
-        } else if (isICOPeriod_3()) {
-            if(crowdSaleState == State.ICO2Finalized) {
-                crowdSaleState = State.ICO_3;
-            }
-            buyTokens(msg.sender, msg.value);
-        } else if (isICOPeriod_4()) {
-            if(crowdSaleState == State.ICO3Finalized) {
-                crowdSaleState = State.ICO_4;
-            }
-            buyTokens(msg.sender, msg.value);
-        } else {
-            revert();
-        }
-    }
-    /*****
-        * @dev Internal function to execute the token transfer to the Recipient
-        * @param _recipient     address     The address who will receives the tokens
-        * @param _value         uint256     The amount invested by the recipient
-        * @return success       bool        Returns true if executed successfully
-        */
-    function buyTokens(address _recipient, uint256 _value) internal returns (bool success) {
-        uint256 boughtTokens = calculateTokens(_value);
-        require(boughtTokens != 0);
-        if(token.balanceOf(_recipient) == 0) {
-            investorCount++;
-        }
-        if(isCrowdSaleStatePreSale()) {
-            token.transferTokens(_recipient, boughtTokens, tokenPerEthPreSale);
-            presaleTokenRaised = presaleTokenRaised.add(_value);
-            return true;
-        } else if (isCrowdSaleStateICO()) {
-            token.transferTokens(_recipient, boughtTokens, tokenPerEthICO);
-            icoTokenRaised = icoTokenRaised.add(_value);
-            return true;
-        }
-    }
-    /*****
-        * @dev Calculates the number of tokens that can be bought for the amount of WEIs transferred
-        * @param _amount    uint256     The amount of money invested by the investor
-        * @return tokens    uint256     The number of tokens
-        */
-    function calculateTokens(uint256 _amount) returns (uint256 tokens){
-        if(isCrowdSaleStatePreSale()) {
-            tokens = _amount.mul(tokenPerEthPreSale);
-        } else if (isCrowdSaleStateICO()) {
-            tokens = _amount.mul(tokenPerEthICO);
-        } else {
-            tokens = 0;
-        }
-    }
-    /*****
-        * @dev Check the state of the Contract, if in Pre Sale
-        * @return bool  Return true if the contract is in Pre Sale
-        */
-    function isCrowdSaleStatePreSale() constant returns (bool) {
-        return crowdSaleState == State.PreSale;
-    }
-    /*****
-        * @dev Check the state of the Contract, if in ICO
-        * @return bool  Return true if the contract is in ICO
-        */
-    function isCrowdSaleStateICO() constant returns (bool) {
-        return crowdSaleState == State.ICO;
-    }
-    /*****
-        * @dev Check if the Pre Sale Period is still ON
-        * @return bool  Return true if the contract is in Pre Sale Period
-        */
-    function isPreSalePeriod() constant returns (bool) {
-        if(presaleTokenRaised > presaleMaxEthCap || now >= presaleEndTimestamp) {
-            crowdSaleState = State.PresaleFinalized;
-            return false;
-        } else {
-            return now > presaleStartTimestamp;
-        }
-    }
-    /*****
-        * @dev Check if the ICO is in the Sale period or not
-        * @return bool  Return true if the contract is in ICO Period
-        */
-    function isICOPeriod_1() constant returns (bool) {
-        if (icoTokenRaised_1 > icoMaxEthCap_1 || now >= icoEndTimestamp_1){
-            crowdSaleState = State.ICO1Finalized;
-            return false;
-        } else {
-            return now > icoStartTimestamp_1;
-        }
-    }
-    function isICOPeriod_2() constant returns (bool) {
-        if (icoTokenRaised_2 > icoMaxEthCap_2 || now >= icoEndTimestamp_2){
-            crowdSaleState = State.ICO2Finalized;
-            return false;
-        } else {
-            return now > icoStartTimestamp_2;
-        }
-    }
-    function isICOPeriod_3() constant returns (bool) {
-        if (icoTokenRaised_3 > icoMaxEthCap_3 || now >= icoEndTimestamp_3){
-            crowdSaleState = State.ICO3Finalized;
-            return false;
-        } else {
-            return now > icoStartTimestamp_3;
-        }
-    }
-    function isICOPeriod_4() constant returns (bool) {
-        if (icoTokenRaised_4 > icoMaxEthCap_4 || now >= icoEndTimestamp_4){
-            crowdSaleState = State.ICO4Finalized;
-            return false;
-        } else {
-            return now > icoStartTimestamp_4;
-        }
-    }
-    /*****
-        * @dev Called by the owner of the contract to close the Sale
-        */
-    function endCrowdSale() onlyOwner {
-        require(now >= icoEndTimestamp || icoTokenRaised >= icoMaxEthCap);
-        if(icoTokenRaised >= icoMinEthCap){
-            crowdSaleState = State.Success;
-            beneficiary.transfer(icoTokenRaised);
-            beneficiary.transfer(presaleTokenRaised);
-        } else {
-            crowdSaleState = State.Failure;
-        }
-    }
-    /*****
-        * @dev Allow investors to take their mmoney back after a failure in ICO
-        * @param _recipient     address     The caller of the function who is looking for refund
-        * @return               bool        Return true, if executed successfully
-        */
-    function getRefund(address _recipient) returns (bool){
-        require(crowdSaleState == State.Failure);
-        uint256 amount = token.balanceOf(_recipient);
-        require(token.refundedAmount(_recipient));
-        _recipient.transfer(amount);
-        return true;
-    }
-    /*****
-        * Fetch some statistics about the ICO
-        */
-    /*****
-        * @dev Fetch the count of different Investors
-        * @return   bool    Returns the total number of different investors
-        */
-    function getInvestorCount() constant returns (uint256) {
-        return investorCount;
-    }
-    /*****
-        * @dev Fetch the amount raised in Pre Sale
-        * @return   uint256     Returns the amount of money raised in Pre Sale
-        */
-    function getPresaleRaisedAmount() constant returns (uint256) {
-        return presaleTokenRaised;
-    }
-    /*****
-        * @dev Fetch the amount raised in ICO
-        * @return   uint256     Returns the amount of money raised in ICO
-        */
-    function getICORaisedAmount() constant returns (uint256) {
-        return icoTokenRaised;
     }
 }
 
@@ -601,5 +253,137 @@ contract Token is ERC20, SafeMath, Ownable {
 
     function allowance(address _owner, address _spender) constant returns(uint remaining) {
         return allowed[_owner][_spender];
+    }
+}
+
+contract Crowdsale is SafeMath {
+
+    //FIELDS
+
+    //CONSTANTS
+    //Time limits
+    uint public constant STAGE_ONE_TIME_END = 31 days;
+    uint public constant STAGE_TWO_TIME_END = 28 days;
+    uint public constant STAGE_THREE_TIME_END = 30 days;
+    uint public constant STAGE_FOUR_TIME_END = 15 days;
+    //Prices of token (USD)
+    uint public constant PRICE_STAGE_ONE =750000;
+    uint public constant PRICE_STAGE_TWO = 850000;
+    uint public constant PRICE_STAGE_THREE = 900000;
+    uint public constant PRICE_STAGE_FOUR = 1000000;
+    //Token Limits
+    uint public constant MAX_SUPPLY_STAGE_ONE =        5000000;
+    uint public constant MAX_SUPPLY_STAGE_TWO =        5000000;
+    uint public constant MAX_SUPPLY_STAGE_THREE =       10000000;
+    uint public constant MAX_SUPPLY_STAGE_FOUR =        20000000;
+    uint public constant ALLOC_CROWDSALE =    5000000;
+
+    //ASSIGNED IN INITIALIZATION
+    //Start and end times
+    uint public publicStartTime; //Time in seconds public crowd fund starts.
+    uint public publicEndTime; //Time in seconds crowdsale ends
+    //Special Addresses    
+    address public multisigAddress; //Address to which all ether flows.
+    address public ownerAddress; //Address of the contract owner. Can halt the crowdsale.
+    //Contracts
+    Token public token; //External token contract hollding the token
+    //Running totals
+    uint public etherRaised; //Total Ether raised.
+    uint public gupSold; //Total token created
+    uint public btcsPortionTotal; //Total of Tokens purchased by BTC Suisse. Not to exceed BTCS_PORTION_MAX.
+    //booleans
+    bool public halted; //halts the crowd sale if true.
+
+    //FUNCTION MODIFIERS
+
+    //Is currently the crowdfund period
+    modifier is_crowdfund_period() {
+        if (now < publicStartTime || now >= publicEndTime) throw;
+        _;
+    }
+
+    //May only be called by the owner address
+    modifier only_owner() {
+        if (msg.sender != ownerAddress) throw;
+        _;
+    }
+
+    //May only be called if the crowdfund has not been halted
+    modifier is_not_halted() {
+        if (halted) throw;
+        _;
+    }
+
+    // EVENTS
+
+    event PreBuy(uint _amount);
+    event Buy(address indexed _recipient, uint _amount);
+
+
+    // FUNCTIONS
+
+    //Initialization function. Deploys GUPToken contract assigns values, to all remaining fields, creates first entitlements in the GUP Token contract.
+    function Crowdsale(
+        address _multisig,
+        uint _publicStartTime
+    ) {
+        ownerAddress = msg.sender;
+        publicStartTime = _publicStartTime;
+        publicEndTime = _publicStartTime + 134 days;
+        multisigAddress = _multisig;
+    }
+
+    //May be used by owner of contract to halt crowdsale and no longer except ether.
+    function toggleHalt(bool _halted)
+        only_owner
+    {
+        halted = _halted;
+    }
+
+    //constant function returns the current GUP price.
+    function getPriceRate()
+        constant
+        returns (uint o_rate)
+    {
+        if (now <= publicStartTime + STAGE_ONE_TIME_END) return PRICE_STAGE_ONE;
+        if (now <= publicStartTime + STAGE_TWO_TIME_END) return PRICE_STAGE_TWO;
+        if (now <= publicStartTime + STAGE_THREE_TIME_END) return PRICE_STAGE_THREE;
+        if (now <= publicStartTime + STAGE_FOUR_TIME_END) return PRICE_STAGE_FOUR;
+        else return 0;
+    }
+
+    // Given the rate of a purchase and the remaining tokens in this tranche, it
+    // will throw if the sale would take it past the limit of the tranche.
+    // It executes the purchase for the appropriate amount of tokens, which
+    // involves adding it to the total, minting GUP tokens and stashing the
+    // ether.
+    // Returns `amount` in scope as the number of GUP tokens that it will
+    // purchase.
+    function processPurchase(uint _rate, uint _remaining)
+        internal
+        returns (uint o_amount)
+    {
+        o_amount = safeDiv(safeMul(msg.value, _rate), 1 ether);
+        if (o_amount > _remaining) throw;
+        if (!multisigAddress.send(msg.value)) throw;
+        gupSold += o_amount;
+    }
+
+    //Default function called by sending Ether to this address with no arguments.
+    //Results in creation of new GUP Tokens if transaction would not exceed hard limit of GUP Token.
+    function()
+        payable
+        is_crowdfund_period
+        is_not_halted
+    {
+        uint amount = processPurchase(getPriceRate(), ALLOC_CROWDSALE - gupSold);
+        Buy(msg.sender, amount);
+    }
+
+    //failsafe drain
+    function drain()
+        only_owner
+    {
+        if (!ownerAddress.send(this.balance)) throw;
     }
 }
