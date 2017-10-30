@@ -21,12 +21,17 @@ app.use(bodyParser.json());
 // Add headers
 app.use(function (req, res, next) {
 
+    var allowedOrigins = ['https://node2.coinlaunch.co', 'http://node2.coinlaunch.co', 'http://138.197.152.121', 'http://localhost:8181'];
+
 
     var origin = req.headers.origin;
 
     if (allowedOrigins.indexOf(origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
+
+    // Website you wish to allow to connect
+    //res.setHeader('Access-Control-Allow-Origin', 'https://node2.coinlaunch.co');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -41,6 +46,7 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+
 
 
 
@@ -81,7 +87,7 @@ app.post('/compile', function (req, result) {
 
 
 
-var server = app.listen(8080, function () {
+var server = app.listen(8181, function () {
 
     var host = server.address().address
     var port = server.address().port

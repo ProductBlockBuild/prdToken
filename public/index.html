@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+    <body>
+      <head>
+          <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+          <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+          <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+          <title>ICO ProductBlock</title>
+      </head>
+
+      <style type="text/css">
+        h5 {
+          margin: 0;
+        }
+        input {
+          width: 50%;
+        }
+      </style>
+
+      <div style="margin: auto; width: 50%; border: 3px solid black; padding: 10px;">
+
+        <b>Token Contract</b> <br><br>      
+        <h5>Public Token Name</h5>
+        <input type="text" id="public-token-name" placeholder="Public Token Name" value="ProductBlock token"><br><br>  
+        <h5>Token Symbol (Exchange)</h5>
+        <input type="text" id="token-symbol" placeholder="Token Symbol (Exchange)" value="PDT"><br><br>  
+        <h5>Token Version</h5>
+        <input type="text" id="token-version" placeholder="Token Version e.g. 1.0"  value="1.0"><br><br>       
+        <h5>Initial Supply</h5>
+        <input type="text" id="initial-supply" placeholder="Initial Supply e.g. 10,000,000" value="1500000000" ><br><br>        
+        <h5>Number of decimal</h5>
+        <input type="text" id="number-of-decimal" placeholder="Number of decimal eg. 10" value="10"><br><br>  
+        
+        <b>ICO Contract</b><br><br>
+        <h5>Multisig wallet address</h5>
+        <input type="text" id="multisig-ETH" placeholder="Multisig wallet address" value="0xb956d99e714035e4EC0c2919B8e31e92ec3aB940"><br><br> 
+        <h5>- stage1</h5><p></p>
+        <h5>Minimum amount to contribute(PDT)</h5>
+        <input type="text" id="min-contribution-1" placeholder="Minimum amount to contribute" value="10000"><br><br> 
+        <h5>Maximum amount to contribute(PDT)</h5>
+        <input type="text" id="max-contribution-1" placeholder="Maximum amount to contribute" value="5000000"><br><br> 
+        <h5>Token price(USD)</h5>
+        <input type="text" id="token-price-usd-1" placeholder="Token price in Wei" value="0.75"><br><br>
+        <h5>Campaign duration in days</h5>
+        <input type="text" id="campaign-duration-days-1" placeholder="Campaign duration in days" value="31"><br><br>
+
+        <h5>- stage2</h5><p></p>
+        <h5>Minimum amount to contribute(PDT)</h5>
+        <input type="text" id="min-contribution-2" placeholder="Minimum amount to contribute" value="20000"><br><br> 
+        <h5>Maximum amount to contribute(PDT)</h5>
+        <input type="text" id="max-contribution-2" placeholder="Maximum amount to contribute" value="5000000"><br><br> 
+        <h5>Token price(USD)</h5>
+        <input type="text" id="token-price-usd-2" placeholder="Token price in Wei" value="0.85"><br><br>
+        <h5>Campaign duration in days</h5>
+        <input type="text" id="campaign-duration-days-2" placeholder="Campaign duration in days" value="28"><br><br>
+
+        <h5>- stage3</h5><p></p>
+        <h5>Minimum amount to contribute(PDT)</h5>
+        <input type="text" id="min-contribution-3" placeholder="Minimum amount to contribute" value="10000"><br><br> 
+        <h5>Maximum amount to contribute(PDT)</h5>
+        <input type="text" id="max-contribution-3" placeholder="Maximum amount to contribute" value="10000000"><br><br> 
+        <h5>Token price(USD)</h5>
+        <input type="text" id="token-price-usd-3" placeholder="Token price in Wei" value="0.95"><br><br>
+        <h5>Campaign duration in days</h5>
+        <input type="text" id="campaign-duration-days-3" placeholder="Campaign duration in days" value="30"><br><br>
+
+        <h5>- stage4</h5><p></p>
+        <h5>Minimum amount to contribute(PDT)</h5>
+        <input type="text" id="min-contribution-4" placeholder="Minimum amount to contribute" value="10000"><br><br> 
+        <h5>Maximum amount to contribute(PDT)</h5>
+        <input type="text" id="max-contribution-4" placeholder="Maximum amount to contribute" value="20000000"><br><br> 
+        <h5>Token price(USD)</h5>
+        <input type="text" id="token-price-usd-4" placeholder="Token price in Wei" value="1.0"><br><br>
+        <h5>Campaign duration in days</h5>
+        <input type="text" id="campaign-duration-days-4" placeholder="Campaign duration in days" value="15"><br><br>
+        
+
+        <b>Contract Actions</b><br><br> 
+      <button id="save" type="button">Deploy</button><br><br>    
+      <button id="start" type="button">Start ICO</button>
+      <button id="emergency-stop" type="button" disabled>Emergency Stop</button>
+      <button id="emergency-restart" type="button">Emergency Restart</button><br><br>
+      <button id="finalize" type="button">Finalize</button><br><br>
+      <b>Transfer Tokens</b><br><br>
+      <button id="transfer" type="button">Transfer Tokens</button><br>
+      <input type="text" id="to-address" size="40" placeholder="address of receipient" value="0xb956d99e714035e4EC0c2919B8e31e92ec3aB940"><br><br>
+      <input type="text" id="amount-to-transffer" placeholder="amount to transffer" value="100"><br><br><hr>
+
+      <b>Load existing contract</b><br><br>
+      <button id="load-contract" type="button">Load existing contract</button><br>
+      <input type="text" id="loaded-contract" size="40" placeholder="contract to load" value=""><br><br>
+
+      <b>Contribute to ICO</b><br><br>
+      <button id="contribute" type="button">Contribute</button><br>
+      <input type="text" id="contributed-amount" size="40" placeholder="amount to contribute" value=""><br><br>
+    </div><br>
+      
+      <div id="result"></div><br><br>
+      
+
+      <!-- Modal progress box start -->
+      <div class="modal fade" id="progress" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content box-windwow">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Blockchain process</h4>
+              <span id="message-status-title"></span>
+            </div>  
+            <div class="modal-body">
+              <span  id="message-status-body"></span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/js/metamask-deploy.js?ver=9"></script>   
+    <script src="../assets/js/interface.js?ver=2"></script> 
+    <script src="../assets/js/jquery.cookie.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/bootstrap-notify.js"></script>
+    <!-- web3 libraries -->
+    <script src="../../web3/dist/web3.js"></script>
+    <!-- TagsInput Plugin -->
+    <script src="../assets/js/jquery.tagsinput.js"></script>
+  
+    <script type="text/javascript">
+
+      function autorun(){
+            init();
+         }
+         if (document.addEventListener) document.addEventListener("DOMContentLoaded", autorun, false);
+         else if (document.attachEvent) document.attachEvent("onreadystatechange", autorun);
+         else window.onload = autorun;
+          
+      </script>
+
+</html>

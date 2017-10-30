@@ -145,6 +145,281 @@ contract PullPayment {
 }
 
 
+// Crowdsale Smart Contract
+// This smart contract collects ETH and in return sends  tokens to the Backers
+contract Crowdsale is SafeMath, Pausable, PullPayment {
+
+    struct Backer {
+        uint weiReceived; // amount of ETH contributed
+        uint tokensSent; // amount of tokens  sent
+    }
+
+    Token public token; // Token contract reference   
+    address public multisigETH; // Multisig contract that will receive the ETH
+    address public commissionAddress;  // address to deposit commissions
+
+    uint public ethReceived; // Number of ETH received
+    uint public totalTokensSent; // Number of tokens sent to ETH contributors
+    uint public startBlock1;
+    uint public endBlock1;
+    uint public startBlock2;
+    uint public endBlock2;
+    uint public startBlock3;
+    uint public endBlock3;
+    uint public startBlock4;
+    uint public endBlock4;
+
+    uint public minContribution1; 
+    uint public minContribution2; 
+    uint public minContribution3; 
+    uint public minContribution4;     
+    uint public maxContribution1;
+    uint public maxContribution2;
+    uint public maxContribution3;
+    uint public maxContribution4;
+    bool public crowdsaleClosed; // Is crowdsale still on going
+    uint public tokenPriceUSD1;
+    uint public tokenPriceUSD2;
+    uint public tokenPriceUSD3;
+    uint public tokenPriceUSD4;
+    uint public campaignDurationDays1; 
+    uint public campaignDurationDays2; 
+    uint public campaignDurationDays3; 
+    uint public campaignDurationDays4;
+    uint public multiplier;
+    uint public status;
+   
+    // Looping through Backer
+    mapping(address => Backer) public backers; //backer list
+    address[] public backersIndex ;   // to be able to itarate through backers when distributing the tokens
+
+
+    // Events
+    event ReceivedETH(address backer, uint amount, uint tokenAmount);
+    event Started(uint startBlockLog, uint endBlockLog);
+    event Finalized(bool success);
+    event ContractUpdated(bool done);
+
+    // Crowdsale  {constructor}
+    // @notice fired when contract is crated. Initilizes all constnat variables.
+
+    function Crowdsale(uint _decimalPoints,
+                        address _multisigETH,
+                        uint _minContribution1,
+                        uint _minContribution2,
+                        uint _minContribution3,
+                        uint _minContribution4,
+                        uint _maxContribution1,
+                        uint _maxContribution2,
+                        uint _maxContribution3,
+                        uint _maxContribution4,
+                        uint _tokenPriceUSD1, 
+                        uint _tokenPriceUSD2, 
+                        uint _tokenPriceUSD3, 
+                        uint _tokenPriceUSD4, 
+                        uint _campaignDurationDays1) {
+    
+        multiplier = 10**_decimalPoints;
+        multisigETH = _multisigETH; //TODO: Replace address with correct one
+        minContribution1 = _minContribution1; 
+        minContribution2 = _minContribution2; 
+        minContribution3 = _minContribution3; 
+        minContribution4 = _minContribution4; 
+        maxContribution1 = _maxContribution1;
+        maxContribution2 = _maxContribution2;
+        maxContribution3 = _maxContribution3;
+        maxContribution4 = _maxContribution4;
+        tokenPriceUSD1 = _tokenPriceUSD1;
+        tokenPriceUSD2 = _tokenPriceUSD2;
+        tokenPriceUSD3 = _tokenPriceUSD3;
+        tokenPriceUSD4 = _tokenPriceUSD4;
+        campaignDurationDays1 = _campaignDurationDays1;
+        campaignDurationDays2 = 28;
+        campaignDurationDays3 = 30;
+        campaignDurationDays4 = 15;
+        totalTokensSent = 0;
+        //TODO replace this address below with correct addrss.
+        commissionAddress = 0xCE5cddb37CE300efBaC9b4010885794EF343Abe8;
+    }
+
+    // @notice Specify address of token contract
+    // @param _tokenAddress {address} address of token contract
+    // @return res {bool}
+
+    function updateTokenAddress(Token _tokenAddress) external onlyOwner() returns(bool res) {
+        token = _tokenAddress;
+        ContractUpdated(true);
+        return true;    
+    }
+
+      // @notice to populate website with status of the sale 
+    // function returnWebsiteData()constant returns(uint, uint, uint, uint, uint, uint, uint, uint, uint, uint, bool, bool) {
+    
+    //     return (startBlock, endBlock, numberOfBackers(), ethReceived, maxCap, minCap, totalTokensSent,  tokenPriceWei, minContributionETH, maxContributionETH, stopped, crowdsaleClosed);
+    // }
+
+    function determineCommissions() public constant returns (uint) {
+     
+        if (this.balance <= 500 ether )
+            return (this.balance * 10)/100;
+        else if (this.balance <= 1000 ether)
+            return (this.balance * 8)/100;
+        else if (this.balance < 10000 ether )
+            return (this.balance * 6)/100; 
+        else 
+            return (this.balance * 6)/100;
+    }
+
+
+    // @notice return number of contributors
+    // @return  {uint} number of contributors
+
+    function numberOfBackers()constant returns (uint) {
+        return backersIndex.length;
+    }
+
+    // {fallback function}
+    // @notice It will call internal function which handels allocation of Ether and calculates tokens.
+    function () payable {  
+        contribute(msg.sender);
+    }
+
+    // @notice It will be called by owner to start the sale    
+    function start() onlyOwner() {
+        startBlock1 = block.number;
+        startBlock2 = startBlock1 + (4*60*24*(campaignDurationDays1));
+        startBlock3 = startBlock2 + (4*60*24*(campaignDurationDays2));
+        startBlock4 = startBlock3 + (4*60*24*(campaignDurationDays3));
+        endBlock4 = startBlock4 + (4*60*24*(campaignDurationDays4));
+        crowdsaleClosed = false;
+        Started(startBlock1, endBlock4);
+    }
+
+    // @notice It will be called by fallback function whenever ether is sent to it
+    // @param  _backer {address} address of beneficiary
+    // @return res {bool} true if transaction was successful
+    function contribute(address _backer) internal stopInEmergency returns(bool res) {
+
+
+        uint tokensToSend = calculateNoOfTokensToSend(); // calculate number of tokens
+
+        Backer storage backer = backers[_backer];
+
+         if ( backer.weiReceived == 0)
+             backersIndex.push(_backer);
+
+        if (!token.transfer(_backer, tokensToSend)) 
+            revert(); // Transfer tokens to contributor
+        backer.tokensSent = safeAdd(backer.tokensSent, tokensToSend);
+        backer.weiReceived = safeAdd(backer.weiReceived, msg.value);
+        ethReceived = safeAdd(ethReceived, msg.value); // Update the total Ether recived
+        totalTokensSent = safeAdd(totalTokensSent, tokensToSend);
+
+       
+        
+
+        ReceivedETH(_backer, msg.value, tokensToSend); // Register event
+        return true;
+    }
+
+    // @notice This function will return number of tokens based on time intervals in the campaign
+     function calculateNoOfTokensToSend() constant internal returns (uint) {
+
+        uint tokenAmount = safeMul(msg.value, multiplier);
+        
+
+        if (block.number <= startBlock2 )  
+            return  tokenAmount + safeDiv(tokenAmount, tokenPriceUSD1);
+        else if (block.number <= startBlock3)
+            return  tokenAmount + safeDiv(tokenAmount, tokenPriceUSD2); 
+        else if (block.number <= startBlock4) 
+                return  tokenAmount + safeDiv(tokenAmount, tokenPriceUSD3);        
+        else         
+            return  tokenAmount + safeDiv(tokenAmount, tokenPriceUSD4);
+    } 
+
+  
+    // @notice This function will finalize the sale.
+    // It will only execute if predetermined sale time passed or all tokens are sold.
+    function finalize() onlyOwner() {
+
+        if (crowdsaleClosed) 
+            revert();
+
+        //TODO uncomment this for live
+        //uint daysToRefund = 4*60*24*15;
+        uint daysToRefund = 3;  
+
+        // if (block.number < endBlock && totalTokensSent < maxCap - 100 ) 
+        // revert();   // - 100 is used to allow closing of the campaing when contribution is near 
+                    // finished as exact amount of maxCap might be not feasible e.g. you can't easily buy few tokens. 
+                    // when min contribution is 0.1 Eth.  
+
+        // if (totalTokensSent < minCap && block.number < safeAdd(endBlock, daysToRefund)) 
+        //     revert();   
+
+        //if (totalTokensSent > minCap) {
+
+            if (!commissionAddress.send(determineCommissions()))
+                revert();
+            if (!multisigETH.send(this.balance)) 
+            revert();  // transfer balance to multisig wallet
+            if (!token.transfer(owner, token.balanceOf(this))) 
+            revert(); // transfer tokens to admin account or multisig wallet                                
+            token.unlock();    // release lock from transfering tokens. 
+        // }else {
+        //     if (!token.burn(this, token.balanceOf(this))) 
+        //     revert();  // burn all the tokens remaining in the contract                      
+        // }
+
+        crowdsaleClosed = true;
+        Finalized(true);
+        
+    }
+
+
+
+    // TODO do we want this here?
+    // @notice Failsafe drain
+    function drain() onlyOwner() {
+        if (!owner.send(this.balance)) 
+            revert();
+    }
+
+    // @notice Prepare refund of the backer if minimum is not reached
+    // burn the tokens
+    function prepareRefund()  internal returns (bool) {
+        uint value = backers[msg.sender].tokensSent;
+
+        if (value == 0) 
+            revert();           
+        if (!token.burn(msg.sender, value)) 
+            revert();
+        uint ethToSend = backers[msg.sender].weiReceived;
+        backers[msg.sender].weiReceived = 0;
+        backers[msg.sender].tokensSent = 0;
+        if (ethToSend > 0) {
+            asyncSend(msg.sender, ethToSend);
+            return true;
+        } else 
+
+            return false;
+        
+    }
+
+    // @notice refund the backer
+    function refund() public returns (bool) {
+
+        if (!prepareRefund()) 
+            revert();
+        if (!withdrawPayments()) 
+            revert();
+        return true;
+
+    }
+ 
+}
+
 // The  token
 contract Token is ERC20, SafeMath, Ownable {
     // Public variables of the token
@@ -253,137 +528,5 @@ contract Token is ERC20, SafeMath, Ownable {
 
     function allowance(address _owner, address _spender) constant returns(uint remaining) {
         return allowed[_owner][_spender];
-    }
-}
-
-contract Crowdsale is SafeMath {
-
-    //FIELDS
-
-    //CONSTANTS
-    //Time limits
-    uint public constant STAGE_ONE_TIME_END = 31 days;
-    uint public constant STAGE_TWO_TIME_END = 28 days;
-    uint public constant STAGE_THREE_TIME_END = 30 days;
-    uint public constant STAGE_FOUR_TIME_END = 15 days;
-    //Prices of token (USD)
-    uint public constant PRICE_STAGE_ONE =750000;
-    uint public constant PRICE_STAGE_TWO = 850000;
-    uint public constant PRICE_STAGE_THREE = 900000;
-    uint public constant PRICE_STAGE_FOUR = 1000000;
-    //Token Limits
-    uint public constant MAX_SUPPLY_STAGE_ONE =        5000000;
-    uint public constant MAX_SUPPLY_STAGE_TWO =        5000000;
-    uint public constant MAX_SUPPLY_STAGE_THREE =       10000000;
-    uint public constant MAX_SUPPLY_STAGE_FOUR =        20000000;
-    uint public constant ALLOC_CROWDSALE =    5000000;
-
-    //ASSIGNED IN INITIALIZATION
-    //Start and end times
-    uint public publicStartTime; //Time in seconds public crowd fund starts.
-    uint public publicEndTime; //Time in seconds crowdsale ends
-    //Special Addresses    
-    address public multisigAddress; //Address to which all ether flows.
-    address public ownerAddress; //Address of the contract owner. Can halt the crowdsale.
-    //Contracts
-    Token public token; //External token contract hollding the token
-    //Running totals
-    uint public etherRaised; //Total Ether raised.
-    uint public gupSold; //Total token created
-    uint public btcsPortionTotal; //Total of Tokens purchased by BTC Suisse. Not to exceed BTCS_PORTION_MAX.
-    //booleans
-    bool public halted; //halts the crowd sale if true.
-
-    //FUNCTION MODIFIERS
-
-    //Is currently the crowdfund period
-    modifier is_crowdfund_period() {
-        if (now < publicStartTime || now >= publicEndTime) throw;
-        _;
-    }
-
-    //May only be called by the owner address
-    modifier only_owner() {
-        if (msg.sender != ownerAddress) throw;
-        _;
-    }
-
-    //May only be called if the crowdfund has not been halted
-    modifier is_not_halted() {
-        if (halted) throw;
-        _;
-    }
-
-    // EVENTS
-
-    event PreBuy(uint _amount);
-    event Buy(address indexed _recipient, uint _amount);
-
-
-    // FUNCTIONS
-
-    //Initialization function. Deploys GUPToken contract assigns values, to all remaining fields, creates first entitlements in the GUP Token contract.
-    function Crowdsale(
-        address _multisig,
-        uint _publicStartTime
-    ) {
-        ownerAddress = msg.sender;
-        publicStartTime = _publicStartTime;
-        publicEndTime = _publicStartTime + 134 days;
-        multisigAddress = _multisig;
-    }
-
-    //May be used by owner of contract to halt crowdsale and no longer except ether.
-    function toggleHalt(bool _halted)
-        only_owner
-    {
-        halted = _halted;
-    }
-
-    //constant function returns the current GUP price.
-    function getPriceRate()
-        constant
-        returns (uint o_rate)
-    {
-        if (now <= publicStartTime + STAGE_ONE_TIME_END) return PRICE_STAGE_ONE;
-        if (now <= publicStartTime + STAGE_TWO_TIME_END) return PRICE_STAGE_TWO;
-        if (now <= publicStartTime + STAGE_THREE_TIME_END) return PRICE_STAGE_THREE;
-        if (now <= publicStartTime + STAGE_FOUR_TIME_END) return PRICE_STAGE_FOUR;
-        else return 0;
-    }
-
-    // Given the rate of a purchase and the remaining tokens in this tranche, it
-    // will throw if the sale would take it past the limit of the tranche.
-    // It executes the purchase for the appropriate amount of tokens, which
-    // involves adding it to the total, minting GUP tokens and stashing the
-    // ether.
-    // Returns `amount` in scope as the number of GUP tokens that it will
-    // purchase.
-    function processPurchase(uint _rate, uint _remaining)
-        internal
-        returns (uint o_amount)
-    {
-        o_amount = safeDiv(safeMul(msg.value, _rate), 1 ether);
-        if (o_amount > _remaining) throw;
-        if (!multisigAddress.send(msg.value)) throw;
-        gupSold += o_amount;
-    }
-
-    //Default function called by sending Ether to this address with no arguments.
-    //Results in creation of new GUP Tokens if transaction would not exceed hard limit of GUP Token.
-    function()
-        payable
-        is_crowdfund_period
-        is_not_halted
-    {
-        uint amount = processPurchase(getPriceRate(), ALLOC_CROWDSALE - gupSold);
-        Buy(msg.sender, amount);
-    }
-
-    //failsafe drain
-    function drain()
-        only_owner
-    {
-        if (!ownerAddress.send(this.balance)) throw;
     }
 }
